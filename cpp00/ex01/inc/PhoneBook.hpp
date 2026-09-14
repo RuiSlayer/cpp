@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:12 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/08 20:39:04 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/14 17:21:53 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ class PhoneBook
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-		void addContact();
-		Contact searchContact(void);
+		void addContact(void);
+		Contact getContact(int index);
+		void searchContact(void);
 };
 
 #endif

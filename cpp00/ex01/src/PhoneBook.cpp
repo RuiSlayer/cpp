@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:30 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/08 21:42:21 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/14 17:21:43 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ std::string getField(std::string const &prompt)
 	return input;
 }
 
-void PhoneBook::addContact()
+void PhoneBook::addContact(void)
 {
 	Contact newContact;
 
@@ -54,7 +54,12 @@ void PhoneBook::addContact()
 	index++;
 }
 
-Contact PhoneBook::searchContact(void)
+Contact PhoneBook::getContact(int index)
+{
+	return (this->list[index]);
+}
+
+void PhoneBook::searchContact(void)
 {
 	std::string input;
 
@@ -66,4 +71,5 @@ Contact PhoneBook::searchContact(void)
 			break;
 		std::cout << RED << "Error: empty field, try again." << RESET << std::endl;
 	}
+	getContact(std::stoi(input)).displayContact();
 }
