@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
+/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:30 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/16 19:55:29 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/09/16 22:52:32 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ PhoneBook::~PhoneBook(void)
 std::string getField(std::string const &prompt)
 {
 	std::string input;
-
 	while (true)
 	{
 		std::cout << prompt;
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+		{
+			std::cout << std::endl << "EOF received, exiting." << std::endl;
+			std::exit(0);
+		}
 		if (!input.empty())
 			break;
 		std::cout << RED << "Error: empty field, try again." << RESET << std::endl;
@@ -71,7 +74,7 @@ static int isValidIndex(std::string input, int &tmpIndex)
 	if (input.empty())
 		{
 			std::cout << RED << "Error: empty field, try again." << RESET << std::endl;
-			return (1);
+			return (0);
 		}
 		for (size_t i = 0; i < input.length(); i++)
 		{
@@ -84,15 +87,15 @@ static int isValidIndex(std::string input, int &tmpIndex)
 		if (!isValid)
 		{
 			std::cout << RED << "Error: index must be a number." << RESET << std::endl;
-			return (1);
+			return (0);
 		}
 		tmpIndex = std::atoi(input.c_str());
 		if (tmpIndex < 0 || tmpIndex > 7)
 		{
 			std::cout << RED << "Error: index must be between 0 and 7." << RESET << std::endl;
-			return (1);
+			return (0);
 		}
-		return(0);
+		return(1);
 }
 
 void PhoneBook::searchContact(void)
@@ -100,13 +103,16 @@ void PhoneBook::searchContact(void)
 	std::string input;
 	Contact c;
 	int tmpIndex;
-	
 	while (true)
 	{
 		std::cout << "index: ";
-		std::getline(std::cin, input);
-		if(!isValidIndex(input, tmpIndex))
-			break ;
+		if (!std::getline(std::cin, input))
+		{
+			std::cout << std::endl << "EOF received, exiting." << std::endl;
+			std::exit(0);
+		}
+		if (!isValidIndex(input, tmpIndex))
+			break;
 	}
 	c = getContact(tmpIndex);
 	c.displayContact(input);

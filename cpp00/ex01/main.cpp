@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
+/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:20:44 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/16 18:31:17 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/09/16 22:51:08 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,27 @@ int main(void)
 	std::string expression;
 	PhoneBook ContactList;
 
+	signal(SIGINT, SIG_IGN);
+
 	while (1)
 	{
 		std::cout << "comand: ";
-		std::getline(std::cin, expression);
+		if (!std::getline(std::cin, expression))
+		{
+			std::cout << std::endl << "EOF received, exiting." << std::endl;
+			break;
+		}
 		if (expression == "EXIT")
-		{
-			return (0);
-		}
+			break;
 		else if (expression == "ADD")
-		{
 			ContactList.addContact();
-		}
 		else if (expression == "SEARCH")
-		{
 			ContactList.searchContact();
-		}
 		else
 		{
 			std::cout << "command not found!" << std::endl;
 			std::cout << "Enter one of the following command: ADD | SEARCH | EXIT " << std::endl;
 		}
 	}
-
 	return (0);
 }
-
