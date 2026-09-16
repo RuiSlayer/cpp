@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:30 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/14 17:21:43 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/16 19:55:29 by rucosta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PhoneBook.hpp"
-#include <iostream>
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void) : index(0)
 {
 	std::cout << GREEN << "PhoneBook: Default constructor called"
 		<< RESET << std::endl;
@@ -42,13 +41,19 @@ std::string getField(std::string const &prompt)
 
 void PhoneBook::addContact(void)
 {
-	Contact newContact;
+	std::string firstName_tmp;
+	std::string lastName_tmp;
+	std::string nickname_tmp;
+	std::string phoneNumber_tmp;
+	std::string darkestSecret_tmp;
 
-	newContact.setFirstName(getField("First name: "));
-	newContact.setLastName(getField("Last name: "));
-	newContact.setNickname(getField("Nickname: "));
-	newContact.setPhoneNumber(getField("Phone number: "));
-	newContact.setDarkestSecret(getField("Darkest secret: "));
+	firstName_tmp = getField("First name: ");
+	lastName_tmp = getField("Last name: ");
+	nickname_tmp = getField("Nickname: ");
+	phoneNumber_tmp = getField("Phone number: ");
+	darkestSecret_tmp = getField("Darkest secret: ");
+
+	Contact newContact(firstName_tmp, lastName_tmp, nickname_tmp, phoneNumber_tmp, darkestSecret_tmp);
 
 	list[index % 8] = newContact;
 	index++;
@@ -59,17 +64,50 @@ Contact PhoneBook::getContact(int index)
 	return (this->list[index]);
 }
 
+static int isValidIndex(std::string input, int &tmpIndex)
+{
+	bool isValid = true;
+
+	if (input.empty())
+		{
+			std::cout << RED << "Error: empty field, try again." << RESET << std::endl;
+			return (1);
+		}
+		for (size_t i = 0; i < input.length(); i++)
+		{
+			if (!std::isdigit(static_cast<unsigned char>(input[i])))
+			{
+				isValid = false;
+				break;
+			}
+		}
+		if (!isValid)
+		{
+			std::cout << RED << "Error: index must be a number." << RESET << std::endl;
+			return (1);
+		}
+		tmpIndex = std::atoi(input.c_str());
+		if (tmpIndex < 0 || tmpIndex > 7)
+		{
+			std::cout << RED << "Error: index must be between 0 and 7." << RESET << std::endl;
+			return (1);
+		}
+		return(0);
+}
+
 void PhoneBook::searchContact(void)
 {
 	std::string input;
-
+	Contact c;
+	int tmpIndex;
+	
 	while (true)
 	{
 		std::cout << "index: ";
 		std::getline(std::cin, input);
-		if (!input.empty())
-			break;
-		std::cout << RED << "Error: empty field, try again." << RESET << std::endl;
+		if(!isValidIndex(input, tmpIndex))
+			break ;
 	}
-	getContact(std::stoi(input)).displayContact();
+	c = getContact(tmpIndex);
+	c.displayContact(input);
 }

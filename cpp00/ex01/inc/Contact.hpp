@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:06 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/14 17:08:05 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/16 19:39:01 by rucosta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 class Contact
 {
 	private:
-		std::string _firstName;
-		std::string _lastName;
-		std::string _nickname;
-		std::string _phoneNumber;
-		std::string _darkestSecret;
+		std::string firstName;
+		std::string lastName;
+		std::string nickname;
+		std::string phoneNumber;
+		std::string darkestSecret;
 	public:
 		Contact(void);
+		Contact(std::string firstName, std::string lastName, std::string nickname,
+				std::string phoneNumber, std::string darkestSecret);
 		~Contact(void);
 		std::string getFirstName(void);
 		std::string getLastName(void);
@@ -37,7 +39,7 @@ class Contact
 		void setNickname(std::string const &data);
 		void setPhoneNumber(std::string const &data);
 		void setDarkestSecret(std::string const &data);
-		void displayContact(void);
+		void displayContact(std::string index);
 };
 
 #endif

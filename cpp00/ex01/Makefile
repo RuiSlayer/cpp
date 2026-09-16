@@ -3,10 +3,13 @@ NAME		= phoneBook
 CC			= g++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-INCLUDES	=	inc/Harl.hpp
+INCLUDES	=	inc/Contact.hpp \
+				inc/phoneBook.hpp
 
 SRCS		=	main.cpp \
-				src/Harl.cpp
+				src/Contact.cpp \
+				src/PhoneBook.cpp \
+
 
 OBJ_DIR		= obj
 OBJS 		= $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
