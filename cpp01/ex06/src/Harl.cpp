@@ -4,14 +4,12 @@ enum e_level { DEBUG = 0, INFO, WARNING, ERROR, UNKNOWN };
 
 Harl::Harl(void)
 {
-	std::cout << GREEN << "Harl: Default constructor called"
-		<< RESET << std::endl;
+	std::cout << "Harl: Default constructor called" << std::endl;
 }
 
 Harl::~Harl(void)
 {
-	std::cout << RED << "Harl: Destructor called"
-		<< RESET << std::endl;
+	std::cout << "Harl: Destructor called" << std::endl;
 }
 
 void Harl::debug(void)
