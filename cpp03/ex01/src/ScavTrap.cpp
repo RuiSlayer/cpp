@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:36:55 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/24 18:01:23 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/25 16:00:53 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	hitPoints = 100;
 	energyPoints = 50;
 	attackDamage = 20;
-	std::cout << "ScavTrap: name constructor called" << std::endl;
+	std::cout << "ScavTrap: " << name << " constructor called" << std::endl;
 }
 
 // Copy constructor

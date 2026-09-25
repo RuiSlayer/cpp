@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:36:46 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/24 17:48:24 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/25 16:01:29 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(void) : name("Default"), hitPoints(10), energyPoints(10), att
 
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
-	std::cout << "Claptrap: name constructor called" << std::endl;
+	std::cout << "Claptrap: " << name << " constructor called" << std::endl;
 }
 
 // Copy constructor
