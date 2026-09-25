@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:32:11 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/25 16:19:08 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/25 17:32:17 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
 		zzz.takeDamage(3);
 		zzz.beRepaired(2);
 	}
- 
+
 	std::cout << "\n=================================" << std::endl;
 	std::cout << "=== ClapTrap draining energy ===" << std::endl;
 	std::cout << "=================================" << std::endl;
@@ -32,7 +32,7 @@ int main()
 		for (int i = 0; i < 11; i++)
 			bob.attack("wall"); // 10th succeeds, 11th fails (no energy left)
 	}
- 
+
 	std::cout << "\n=====================================" << std::endl;
 	std::cout << "=== ClapTrap draining hit points ===" << std::endl;
 	std::cout << "=====================================" << std::endl;
@@ -43,7 +43,7 @@ int main()
 		tom.beRepaired(5);       // fails, no hit points
 		tom.takeDamage(5);       // fails, already at 0
 	}
- 
+
 	std::cout << "\n===================================" << std::endl;
 	std::cout << "=== ClapTrap copy / assignment ===" << std::endl;
 	std::cout << "===================================" << std::endl;

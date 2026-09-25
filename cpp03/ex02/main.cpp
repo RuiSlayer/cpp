@@ -6,12 +6,13 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:32:11 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/25 17:32:05 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/25 17:31:05 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ClapTrap.hpp"
 #include "inc/ScavTrap.hpp"
+#include "inc/FragTrap.hpp"
 
 int main()
 {
@@ -101,14 +102,6 @@ int main()
 		hpTest.attack("anything");   // fails, no hit points
 		hpTest.beRepaired(10);       // fails, no hit points
 	}
- 
-	std::cout << "\n=============================" << std::endl;
-	std::cout << "=== ScavTrap guardGate() ===" << std::endl;
-	std::cout << "=============================" << std::endl;
-	{
-		ScavTrap gatekeeper("Watcher");
-		gatekeeper.guardGate();
-	}
 
 	std::cout << "\n===============================================" << std::endl;
 	std::cout << "=== ScavTrap copy constructor / assignment ===" << std::endl;
@@ -123,9 +116,59 @@ int main()
 		scavAssigned.attack("assigned-target");
 	}
 
-	std::cout << "\n================================================" << std::endl;
-	std::cout << "=== End of main, remaining destructors fire ===" << std::endl;
-	std::cout << "================================================" << std::endl;
+	std::cout << "\n===================================================" << std::endl;
+	std::cout << "=== FragTrap construction/destruction chaining ===" << std::endl;
+	std::cout << "===================================================" << std::endl;
+	{
+		std::cout << "-- constructing FragTrap: expect ClapTrap ctor, then FragTrap ctor --" << std::endl;
+		FragTrap alpha("Alpha");
+		std::cout << "-- end of scope: expect FragTrap dtor, then ClapTrap dtor --" << std::endl;
+	}
+ 
+	std::cout << "\n=====================================================" << std::endl;
+	std::cout << "=== FragTrap default constructor / highFivesGuys ===" << std::endl;
+	std::cout << "=====================================================" << std::endl;
+	{
+		FragTrap defaultFrag;
+		defaultFrag.highFivesGuys();
+		defaultFrag.attack("dummy"); // inherited ClapTrap::attack, 30 damage
+	}
+ 
+	std::cout << "\n====================================================" << std::endl;
+	std::cout << "=== FragTrap draining energy (inherited attack) ===" << std::endl;
+	std::cout << "====================================================" << std::endl;
+	{
+		FragTrap energyTest("Boomer");
+		for (int i = 0; i < 101; i++)
+			energyTest.attack("wall"); // 100th succeeds, 101st fails (no energy)
+	}
+ 
+	std::cout << "\n=====================================" << std::endl;
+	std::cout << "=== FragTrap draining hit points ===" << std::endl;
+	std::cout << "=====================================" << std::endl;
+	{
+		FragTrap hpTest("Cracked");
+		hpTest.takeDamage(150);    // clamps to 0
+		hpTest.attack("anything");    // fails (inherited ClapTrap guard)
+		hpTest.beRepaired(10);        // fails (inherited ClapTrap guard)
+	}
+ 
+	std::cout << "\n===============================================" << std::endl;
+	std::cout << "=== FragTrap copy constructor / assignment ===" << std::endl;
+	std::cout << "===============================================" << std::endl;
+	{
+		FragTrap fragOriginal("FragOriginal");
+		fragOriginal.takeDamage(20);
+		FragTrap fragCopy(fragOriginal);
+		FragTrap fragAssigned;
+		fragAssigned = fragOriginal;
+		fragCopy.attack("copy-target");
+		fragAssigned.attack("assigned-target");
+	}
+
+	std::cout << "\n==================================================" << std::endl;
+	std::cout << "=== End of main, remaining destructors fire =====" << std::endl;
+	std::cout << "==================================================" << std::endl;
 	return (0);
 }
 

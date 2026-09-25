@@ -1,14 +1,16 @@
-NAME		= scavTrap
+NAME		= fragTrap
 
 CC			= g++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 INCLUDES	=	inc/ClapTrap.hpp \
-				inc/ScavTrap.hpp
+				inc/ScavTrap.hpp \
+				inc/FragTrap
 
 SRCS		=	main.cpp \
 				src/ClapTrap.cpp \
-				src/ScavTrap.cpp
+				src/ScavTrap.cpp \
+				src/FragTrap.cpp
 
 OBJ_DIR		= obj
 OBJS 		= $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
