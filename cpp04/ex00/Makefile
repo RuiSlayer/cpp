@@ -1,16 +1,21 @@
-NAME		= fragTrap
+NAME		= polymorphism
 
 CC			= g++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-INCLUDES	=	inc/ClapTrap.hpp \
-				inc/ScavTrap.hpp \
-				inc/FragTrap
+INCLUDES	=	inc/Animal.hpp \
+				 inc/Cat.hpp \
+				 inc/Colors.h \
+				 inc/Dog.hpp \
+				 inc/WrongAnimal.hpp \
+				 inc/WrongCat.hpp
 
 SRCS		=	main.cpp \
-				src/ClapTrap.cpp \
-				src/ScavTrap.cpp \
-				src/FragTrap.cpp
+				src/Animal.cpp \
+				src/Cat.cpp \
+				src/Dog.cpp \
+				src/WrongAnimal.cpp \
+				src/WrongCat.cpp
 
 OBJ_DIR		= obj
 OBJS 		= $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
