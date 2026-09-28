@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:20:44 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/16 22:51:08 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/28 22:16:01 by rucosta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(void)
 
 	while (1)
 	{
-		std::cout << "comand: ";
+		std::cout << "command: ";
 		if (!std::getline(std::cin, expression))
 		{
 			std::cout << std::endl << "EOF received, exiting." << std::endl;

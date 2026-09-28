@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:30 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/16 22:52:32 by slayer           ###   ########.fr       */
+/*   Updated: 2026/09/28 22:26:46 by rucosta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void PhoneBook::searchContact(void)
 			std::cout << std::endl << "EOF received, exiting." << std::endl;
 			std::exit(0);
 		}
-		if (!isValidIndex(input, tmpIndex))
+		if (isValidIndex(input, tmpIndex))
 			break;
 	}
 	c = getContact(tmpIndex);
