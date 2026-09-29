@@ -6,11 +6,13 @@
 /*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:30 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/28 22:26:46 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/09/29 01:38:58 by rucosta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PhoneBook.hpp"
+#include <sstream>
+#include <string>
 
 PhoneBook::PhoneBook(void) : index(0)
 {
@@ -58,8 +60,7 @@ void PhoneBook::addContact(void)
 
 	Contact newContact(firstName_tmp, lastName_tmp, nickname_tmp, phoneNumber_tmp, darkestSecret_tmp);
 
-	list[index % 8] = newContact;
-	index++;
+	list[index %= 8] = newContact;
 }
 
 Contact PhoneBook::getContact(int index)
@@ -98,11 +99,71 @@ static int isValidIndex(std::string input, int &tmpIndex)
 		return(1);
 }
 
+std::string	truncate(std::string field)
+{
+	std::string newField;
+	std::string spacing;
+
+	if(field.length() == 10)
+		return (field);
+	if(field.length() < 10)
+	{
+		spacing.assign(10 - field.length(), ' ');
+		return (newField = spacing + field);
+	}
+	newField = field.substr(0, 9);
+	newField += '.';
+	return(newField);
+}
+
+void displayContact(Contact c)
+{
+	std::cout << "first name: ";
+	std::cout << c.getFirstName() << std::endl;
+
+	std::cout << "last name: ";
+	std::cout << c.getLastName() << std::endl;
+
+	std::cout << "nickname: ";
+	std::cout << c.getNickname() << std::endl;
+
+	std::cout << "phoneNumber: ";
+	std::cout << c.getPhoneNumber() << std::endl;
+
+	std::cout << "darkestSecret: ";
+	std::cout << c.getDarkestSecret() << std::endl;
+}
+
+static std::string myToString(int i)
+{
+	std::ostringstream oss;
+	oss << i;
+	return oss.str();
+}
+
+void displayPhoneBook(PhoneBook *p)
+{
+	std::cout << truncate("index") << "|" 
+	<< truncate("first name") << "|" 
+	<< truncate("last name") << "|" 
+	<< truncate("nickname") << std::endl;
+
+	std::cout << "-------------------------------------------" << std::endl;
+	for (size_t i = 0; i < 8; i++)
+	{
+		std::cout << truncate(myToString(i)) << "|"
+		<< truncate(p->getContact(i).getFirstName()) << "|"
+		<< truncate(p->getContact(i).getLastName()) << "|"
+		<< truncate(p->getContact(i).getNickname()) << std::endl;
+	}
+}
+
 void PhoneBook::searchContact(void)
 {
 	std::string input;
 	Contact c;
 	int tmpIndex;
+	displayPhoneBook(this);
 	while (true)
 	{
 		std::cout << "index: ";
@@ -115,5 +176,5 @@ void PhoneBook::searchContact(void)
 			break;
 	}
 	c = getContact(tmpIndex);
-	c.displayContact(input);
+	displayContact(c);
 }

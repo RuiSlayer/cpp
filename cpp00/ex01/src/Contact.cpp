@@ -6,7 +6,7 @@
 /*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:20 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/16 19:39:12 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/09/29 01:36:07 by rucosta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 Contact::Contact(void)
 {
-	std::cout << YELLOW << "Contact: Default constructor called"
-		<< RESET << std::endl;
+	// std::cout << YELLOW << "Contact: Default constructor called"
+	// 	<< RESET << std::endl;
 }
 
 Contact::Contact(std::string firstName, std::string lastName, std::string nickname,
@@ -33,8 +33,8 @@ Contact::Contact(std::string firstName, std::string lastName, std::string nickna
 
 Contact::Contact::~Contact(void)
 {
-	std::cout << RED << "Contact: Destructor called"
-		<< RESET << std::endl;
+	// std::cout << RED << "Contact: Destructor called"
+	// 	<< RESET << std::endl;
 }
 
 std::string Contact::getFirstName(void)
@@ -79,27 +79,4 @@ void Contact::setPhoneNumber(std::string const &data)
 void Contact::setDarkestSecret(std::string const &data)
 {
 	this->darkestSecret = data;
-}
-
-std::string	truncate(std::string field)
-{
-	std::string newField;
-	std::string spacing;
-
-	if(field.length() == 10)
-		return (field);
-	if(field.length() < 10)
-	{
-		spacing.assign(10 - field.length(), ' ');
-		return (newField = spacing + field);
-	}
-	newField = field.substr(0, 9);
-	newField += '.';
-	return(newField);
-}
-
-void Contact::displayContact(std::string index)
-{
-	std::cout << truncate("index") << "|" << truncate("first name") << "|" << truncate("last name") << "|"<< truncate("nickname") << std::endl;
-	std::cout << truncate(index) << "|" << truncate(getFirstName()) << "|" << truncate(getLastName()) << "|" << truncate(getNickname()) << std::endl;
 }
