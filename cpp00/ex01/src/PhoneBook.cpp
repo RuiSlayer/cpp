@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
+/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 20:21:30 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/29 01:38:58 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/09/29 22:25:06 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void PhoneBook::addContact(void)
 	Contact newContact(firstName_tmp, lastName_tmp, nickname_tmp, phoneNumber_tmp, darkestSecret_tmp);
 
 	list[index %= 8] = newContact;
+	index++;
 }
 
 Contact PhoneBook::getContact(int index)
