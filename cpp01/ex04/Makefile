@@ -3,7 +3,7 @@ NAME		= my_sed
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-INCLUDES	=	Zombie.hpp
+INCLUDES	=
 
 SRCS		= 	main.cpp \
 

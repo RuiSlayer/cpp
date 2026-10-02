@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
+/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 16:08:25 by rucosta           #+#    #+#             */
-/*   Updated: 2026/09/08 16:40:31 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/10/02 16:28:12 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,19 @@ int	main(int argc, char **argv)
 	if(filename.empty() || s1.empty() || s2.empty())
 		return((std::cout << "Error: file , s1 , s2 can't be an empty string!" << std::endl), 1);
 
-	std::ifstream infile(filename);
+	std::ifstream inFile(argv[1]);
 
-	if (!infile)
+	if (!inFile.is_open())
 		return((std::cout << "Error: could not open input file." << std::endl), 1);
 
-	std::ofstream outfile("new" + filename);
-	if (!outfile)
+	filename.append(".replace");
+
+	std::ofstream outFile(filename.c_str());
+
+	if (!outFile)
 		return ((std::cout << "Error: could not create output file." << std::endl), 1);
 
-	while(getline (infile, buffer, '\0'))
+	while(std::getline (inFile, buffer, '\0'))
 	{
 		while ((pos = buffer.find(s1, pos)) != std::string::npos)
 		{
@@ -44,11 +47,11 @@ int	main(int argc, char **argv)
 			buffer.insert(pos, s2);
 			pos += s2.length();
 		}
-		outfile << buffer;
+		outFile << buffer;
 	}
 
-	infile.close();
-	outfile.close();
+	inFile.close();
+	outFile.close();
 
 	return (0);
 }
