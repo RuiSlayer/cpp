@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
+/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 13:12:44 by rucosta           #+#    #+#             */
-/*   Updated: 2026/09/08 14:13:44 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/10/05 06:33:39 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Weapon
 	public:
 		Weapon(std::string type);
 		~Weapon(void);
-	std::string getType(void);
+	const std::string &getType(void);
 	void setType(std::string);
 
 };

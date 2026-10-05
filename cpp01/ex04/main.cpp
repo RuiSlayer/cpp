@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 16:08:25 by rucosta           #+#    #+#             */
-/*   Updated: 2026/10/02 16:28:12 by slayer           ###   ########.fr       */
+/*   Updated: 2026/10/05 07:11:50 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ int	main(int argc, char **argv)
 	std::string s1 = argv[2];
 	std::string	s2 = argv[3];
 
-	if(filename.empty() || s1.empty() || s2.empty())
+	if(filename.empty() || s1.empty())
 		return((std::cout << "Error: file , s1 , s2 can't be an empty string!" << std::endl), 1);
 
 	std::ifstream inFile(argv[1]);
+
+	if(inFile.peek() == EOF)
+		return ((std::cout << "Error: <file> must not be a directory." << std::endl), 1);
 
 	if (!inFile.is_open())
 		return((std::cout << "Error: could not open input file." << std::endl), 1);

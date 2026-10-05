@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rucosta <rucosta@student.42.fr>            +#+  +:+       +#+        */
+/*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 13:27:28 by rucosta           #+#    #+#             */
-/*   Updated: 2026/09/08 14:13:35 by rucosta          ###   ########.fr       */
+/*   Updated: 2026/10/05 06:34:13 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Weapon::~Weapon(void)
 	std::cout << _type << " has been destroyed" << std::endl;
 }
 
-std::string Weapon::getType(void)
+const std::string &Weapon::getType(void)
 {
 	return (_type);
 }
