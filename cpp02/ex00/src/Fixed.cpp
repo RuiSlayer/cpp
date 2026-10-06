@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 21:55:29 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/20 22:49:40 by slayer           ###   ########.fr       */
+/*   Updated: 2026/10/06 22:51:59 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 const int Fixed::fractionalBits;
 
 // Default constructor
-Fixed::Fixed(void)
+Fixed::Fixed(void) : fixedPoint(0)
 {
 	std::cout << "Fixed: Default constructor called" << std::endl;
-
-	fixedPoint = 0;
 }
 
 // Copy constructor
