@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 21:55:29 by slayer            #+#    #+#             */
-/*   Updated: 2026/10/06 23:00:40 by slayer           ###   ########.fr       */
+/*   Updated: 2026/10/08 14:57:52 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,21 @@ Fixed Fixed::operator-(const Fixed &other) const
 
 Fixed Fixed::operator*(const Fixed &other) const
 {
-	Fixed result;
-	result.setRawBits((this->getRawBits() * other.getRawBits()) >> fractionalBits);
+	Fixed 	result;
+	long	temp;
+
+	temp = ((long)this->getRawBits() * other.getRawBits()) >> fractionalBits;
+	result.setRawBits(temp);
 	return (result);
 }
-
+  
 Fixed Fixed::operator/(const Fixed &other) const
 {
 	Fixed result;
-	result.setRawBits((this->getRawBits() << fractionalBits) / other.getRawBits());
+	long temp;
+
+	temp = ((long)this->getRawBits() << fractionalBits) / other.getRawBits();
+	result.setRawBits(temp);
 	return (result);
 }
 

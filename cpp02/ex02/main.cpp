@@ -6,11 +6,13 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 21:50:05 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/21 13:16:04 by slayer           ###   ########.fr       */
+/*   Updated: 2026/10/08 14:58:17 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/Fixed.hpp"
+#include <iostream>
+#include <ostream>
 
 int main(void)
 {
