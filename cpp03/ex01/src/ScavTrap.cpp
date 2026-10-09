@@ -6,7 +6,7 @@
 /*   By: slayer <slayer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:36:55 by slayer            #+#    #+#             */
-/*   Updated: 2026/09/25 16:00:53 by slayer           ###   ########.fr       */
+/*   Updated: 2026/10/10 00:53:25 by slayer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ ScavTrap::ScavTrap(void)
 	hitPoints = 100;
 	energyPoints = 50;
 	attackDamage = 20;
+	type = "ScavTrap: ";
 	std::cout << "ScavTrap: Default constructor called" << std::endl;
 }
 
@@ -26,6 +27,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	hitPoints = 100;
 	energyPoints = 50;
 	attackDamage = 20;
+	type = "ScavTrap: ";
 	std::cout << "ScavTrap: " << name << " constructor called" << std::endl;
 }
 
@@ -56,21 +58,21 @@ ScavTrap::~ScavTrap(void)
 	std::cout << "ScavTrap: Destructor called" << std::endl;
 }
 
-void ScavTrap::attack(const std::string& target)
-{
-	if (hitPoints == 0)
-	{
-		std::cout << "ScavTrap " << name << " cannot attack, it has no hit points left!" << std::endl;
-		return ;
-	}
-	if (energyPoints == 0)
-	{
-		std::cout << "ScavTrap " << name << " cannot attack, it has no energy points left!" << std::endl;
-		return ;
-	}
-	energyPoints--;
-	std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
-}
+// void ScavTrap::attack(const std::string& target)
+// {
+// 	if (hitPoints == 0)
+// 	{
+// 		std::cout << "ScavTrap " << name << " cannot attack, it has no hit points left!" << std::endl;
+// 		return ;
+// 	}
+// 	if (energyPoints == 0)
+// 	{
+// 		std::cout << "ScavTrap " << name << " cannot attack, it has no energy points left!" << std::endl;
+// 		return ;
+// 	}
+// 	energyPoints--;
+// 	std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+// }
 
 void ScavTrap::guardGate(void)
 {
